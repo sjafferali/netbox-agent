@@ -291,7 +291,7 @@ class Network(object):
         return update, interface
 
     def update_interface_macs(self, nic, macs):
-        nb_macs = list(nb.ipam.ip_addresses.filter(**{self.intf_type: nic.id}))
+        nb_macs = list(nb.dcim.mac_addresses.filter(**{self.intf_type: nic.id}))
         # Clean
         for nb_mac in nb_macs:
             if nb_mac.mac_address not in macs:
@@ -301,7 +301,7 @@ class Network(object):
         for mac in macs:
             if mac not in {nb_mac.mac_address for nb_mac in nb_macs}:
                 logging.debug("Adding MAC {mac} to {nic}".format(mac=mac, nic=nic))
-                self.nb_net.mac_addresses.create(
+                nb.dcim.mac_addresses.create(
                     {
                         "mac_address": mac,
                         "assigned_object_type": "dcim.interface",
