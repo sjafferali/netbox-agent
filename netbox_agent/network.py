@@ -291,7 +291,7 @@ class Network(object):
         return update, interface
 
     def update_interface_macs(self, nic, macs):
-        nb_macs = list(self.nb_net.mac_addresses.filter(interface_id=nic.id))
+        nb_macs = list(nb.ipam.ip_addresses.filter(**{self.intf_type: nic.id}))
         # Clean
         for nb_mac in nb_macs:
             if nb_mac.mac_address not in macs:
