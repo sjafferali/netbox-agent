@@ -107,7 +107,7 @@ class LSHW:
                         "type": device.get("description"),
                     }
                 )
-        elif "driver" in obj["configuration"] and "nvme" in obj["configuration"]["driver"]:
+        if "driver" in obj["configuration"] and "nvme" in obj["configuration"]["driver"]:
             if not is_tool("nvme"):
                 logging.error("nvme-cli >= 1.0 does not seem to be installed")
                 return
