@@ -304,7 +304,7 @@ class Network(object):
                 nb.dcim.mac_addresses.create(
                     {
                         "mac_address": mac,
-                        "assigned_object_type": "dcim.interface",
+                        "assigned_object_type": self.assigned_object_type,
                         "assigned_object_id": nic.id,
                     }
                 )
