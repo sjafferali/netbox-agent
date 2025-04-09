@@ -108,7 +108,7 @@ class VirtualMachine(object):
                 platform=self.device_platform.id,
                 vcpus=vcpus,
                 memory=memory,
-                disk=disk,
+                disk=int(disk),
                 tenant=tenant.id if tenant else None,
                 tags=[{"name": x} for x in self.tags],
             )
