@@ -221,7 +221,7 @@ class Inventory:
 
     def get_raid_cards(self, filter_cards=False):
         raid_class = None
-        if self.server.manufacturer in ("Dell", "Huawei"):
+        if self.server.manufacturer in ("Dell", "Huawei", "Supermicro"):
             if is_tool("omreport"):
                 raid_class = OmreportRaid
             if is_tool("storcli"):
